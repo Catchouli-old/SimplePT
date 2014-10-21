@@ -122,25 +122,6 @@ void main()
 	vec3 ray_pos_world = ray_pos_camera + in_position;
 	vec3 ray_dir_world = vec3(vec4(ray_dir_camera, 0.0) * in_rotation);
 
-    // Hacky light rendering.. pick point on light
-    float u = rand(rng_state);
-    float v = rand(rng_state);
-
-    vec3 p = light.a + u * (light.b - light.a) + v * (light.d - light.a);
-
-    vec3 dirToLight = p - ray_pos_world;
-    float dist = length(dirToLight);
-    dirToLight = normalize(dirToLight);
-
-    // Raycast to it
-    //HitResult lightCast = trace(origin, dir, dist);
-
-    //if (lightCast.t == dist)
-    //{
-    //    out_colour = vec4(1.0, 1.0, 1.0, 1.0);
-    //    return;
-    //}
-
 	// Do ray trace
     float dx = 1.0 / SAMPLES_X;
     float dy = 1.0 / SAMPLES_X;

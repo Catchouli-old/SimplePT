@@ -38,14 +38,10 @@ namespace pt
         shader.bind();
 
         // Set uniforms
-        static int frame = 0;
-        frame++;
-
         shader.setUniformVector("in_position", mCamera.getPosition());
         shader.setUniformMatrix("in_rotation", glm::toMat4(mCamera.getRotation()));
         shader.setUniformFloat("in_aspect", (float)mHeight / (float)mWidth);
         shader.setUniformFloat("in_time", (float)glfwGetTime());
-        shader.setUniformInt("in_frame", frame);
 
         // Set vertex attribute location
         quad[0].bindPosition(shader, "in_vertex_position");
