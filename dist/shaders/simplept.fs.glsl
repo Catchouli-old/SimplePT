@@ -1,6 +1,8 @@
 #version 330 core
 
-#define MAX_BOUNCES 4
+#define MAX_BOUNCES 4 /* The number of times the primary ray can bounce around the scene */
+#define SAMPLES_X 8
+#define SAMPLES_Y 8 /* Total samples per pixel = SAMPLES_X * SAMPLE_Y */
 
 uniform float in_time;
 uniform vec3 in_position;
@@ -108,8 +110,6 @@ const float LARGE_VALUE = 1e20;
 
 void main()
 {
-    int SAMPLES = 0;
-
     vec2 rng_state = vec2(vertex_pos.x + 7.0 * in_time, vertex_pos.y + 13.0 * in_time);
 
     out_colour = vec4(0);
@@ -142,17 +142,12 @@ void main()
     //}
 
 	// Do ray trace
-    float xsamples = 1;
-    float ysamples = 1;
-
-    float dx = 1.0 / xsamples;
-    float dy = 1.0 / xsamples;
+    float dx = 1.0 / SAMPLES_X;
+    float dy = 1.0 / SAMPLES_X;
 
     for (float x = 0; x < 1.0; x += dx)
     for (float y = 0; y < 1.0; y += dy)
     {
-        SAMPLES++;
-
         float weight = 1.0;
         vec3 origin = ray_pos_world;
         vec3 dir = ray_dir_world;
@@ -207,7 +202,7 @@ void main()
         }
     }
     
-    out_colour /= float(SAMPLES);
+    out_colour /= float(SAMPLES_X * SAMPLES_Y);
     out_colour = clamp(out_colour, 0.0, 1.0);
 }
 
