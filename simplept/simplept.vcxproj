@@ -68,18 +68,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -87,19 +91,21 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>include;$(SolutionDir)/renderutils/include;$(SolutionDir)/dep/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;GLM_FORCE_RADIANS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)dep/lib/$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>renderutils.lib;glfw3dll.lib;opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>renderutils.lib;glfw3dll.lib;opengl32.lib;glu32.lib;glew32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)dep/bin/$(Platform)" "$(OutDir)" /s /d
-xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d</Command>
-    </PostBuildEvent>
-    <CustomBuildStep>
       <Command>
       </Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>xcopy "$(SolutionDir)dep/bin/$(Platform)" "$(OutDir)" /s /d /Y
+xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d /Y</Command>
+      <Outputs>fakefile</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -108,19 +114,21 @@ xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d</Command>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>include;$(SolutionDir)/renderutils/include;$(SolutionDir)/dep/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;GLM_FORCE_RADIANS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)dep/lib/$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>renderutils.lib;glfw3dll.lib;opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>renderutils.lib;glfw3dll.lib;opengl32.lib;glu32.lib;glew32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)dep/bin/$(Platform)" "$(OutDir)" /s /d
-xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d</Command>
-    </PostBuildEvent>
-    <CustomBuildStep>
       <Command>
       </Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>xcopy "$(SolutionDir)dep/bin/$(Platform)" "$(OutDir)" /s /d /Y
+xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d /Y</Command>
+      <Outputs>fakefile</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,21 +139,23 @@ xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>include;$(SolutionDir)/renderutils/include;$(SolutionDir)/dep/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;GLM_FORCE_RADIANS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)dep/lib/$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>renderutils.lib;glfw3dll.lib;opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>renderutils.lib;glfw3dll.lib;opengl32.lib;glu32.lib;glew32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)dep/bin/$(Platform)" "$(OutDir)" /s /d
-xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d</Command>
-    </PostBuildEvent>
-    <CustomBuildStep>
       <Command>
       </Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>xcopy "$(SolutionDir)dep/bin/$(Platform)" "$(OutDir)" /s /d /Y
+xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d /Y</Command>
+      <Outputs>fakefile</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,24 +166,27 @@ xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>include;$(SolutionDir)/renderutils/include;$(SolutionDir)/dep/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;GLM_FORCE_RADIANS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(OutDir);$(SolutionDir)dep/lib/$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>renderutils.lib;glfw3dll.lib;opengl32.lib;glu32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>renderutils.lib;glfw3dll.lib;opengl32.lib;glu32.lib;glew32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)dep/bin/$(Platform)" "$(OutDir)" /s /d
-xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d</Command>
-    </PostBuildEvent>
-    <CustomBuildStep>
       <Command>
       </Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>xcopy "$(SolutionDir)dep/bin/$(Platform)" "$(OutDir)" /s /d /Y
+xcopy "$(SolutionDir)dist" "$(OutDir)" /s /d /Y</Command>
+      <Outputs>fakefile</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\app\Input.cpp" />
     <ClCompile Include="src\app\Render.cpp" />
     <ClCompile Include="src\app\Update.cpp" />
     <ClCompile Include="src\app\SimplePT.cpp" />

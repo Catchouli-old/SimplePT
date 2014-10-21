@@ -28,12 +28,17 @@ Global
 		{96047EF7-88DD-46E1-ADC9-8CCE6629435B}.Release|x64.Build.0 = Release|x64
 		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Debug|Win32.ActiveCfg = Debug|Win32
 		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Debug|Win32.Build.0 = Debug|Win32
-		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Debug|x64.ActiveCfg = Debug|Win32
+		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Debug|x64.ActiveCfg = Debug|x64
+		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Debug|x64.Build.0 = Debug|x64
 		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Release|Win32.ActiveCfg = Release|Win32
 		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Release|Win32.Build.0 = Release|Win32
-		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Release|x64.ActiveCfg = Release|Win32
+		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Release|x64.ActiveCfg = Release|x64
+		{9A354D11-CD60-48E6-8E58-1A60CE100F31}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
